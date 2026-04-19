@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIMAV Tienda Oficial</title>
+    <meta name="description" content="Tienda oficial de SIMAV. Sistema Inteligente para Movilidad y Asistencia Visual — bastón inteligente para personas con discapacidad visual.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="simav-store-style.css">
+</head>
+<body>
+
+    <!-- ================================================
+         HEADER
+    ================================================= -->
+    <header class="site-header" id="header">
+        <div class="container">
+            <div class="header-inner">
+                <a href="#" class="logo">
+                    <img src="images/simav-logo.png" alt="SIMAV Logo" class="logo-img">
+                    <div class="logo-text">
+                        <span class="logo-name">SIMAV</span>
+                        <span class="logo-tagline">Sistema Inteligente para Movilidad y Asistencia Visual</span>
+                    </div>
+                </a>
+
+                <nav class="nav-main">
+                    <a href="#collections">Colecciones</a>
+                    <a href="#story">Nuestro Proyecto</a>
+                    <a href="#craftsmanship">Tecnología</a>
+                    <a href="#contact">Contáctanos</a>
+                    <a href="#contact" class="nav-cta">Solicitar Información</a>
+                </nav>
+
+                <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+    <nav class="mobile-nav" id="mobileNav">
+        <button class="mobile-nav-close" id="mobileNavClose">×</button>
+        <ul class="mobile-nav-links">
+            <li><a href="#collections">Colecciones</a></li>
+            <li><a href="#story">Nuestro Proyecto</a></li>
+            <li><a href="#craftsmanship">Tecnología</a></li>
+            <li><a href="#contact">Contáctanos</a></li>
+        </ul>
+        <div class="mobile-nav-cta">
+            <a href="#contact" class="btn-primary">Solicitar Información</a>
+        </div>
+    </nav>
+
+    <!-- ================================================
+         HERO
+    ================================================= -->
+    <section class="hero">
+        <div class="hero-content">
+            <p class="text-label hero-tagline">Movilidad Inteligente</p>
+            <h1 class="heading-display hero-title">
+                Tecnología que<br>Guía tu <em>Mundo</em>
+            </h1>
+            <p class="text-body hero-description">
+                SIMAV es un sistema de asistencia visual avanzado diseñado para 
+                potenciar la independencia y seguridad de personas con discapacidad 
+                visual mediante tecnología de vanguardia.
+            </p>
+            <div class="hero-actions">
+                <a href="#collections" class="btn-primary">Explorar Productos</a>
+                <a href="#story" class="btn-text">Conocer el Proyecto</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="hero-slide active" data-title="Bastón Inteligente SIMAV" data-price="Modelo Pro">
+                <img src="images/maison-hero-01.jpg" alt="Bastón inteligente SIMAV">
+            </div>
+            <div class="hero-slide" data-title="Sensor de Proximidad" data-price="Tecnología Avanzada">
+                <img src="images/maison-hero-02.jpg" alt="Tecnología de sensores SIMAV">
+            </div>
+            <div class="hero-slide" data-title="Conectividad Total" data-price="App Incluida">
+                <img src="images/maison-hero-03.jpg" alt="Conectividad y app SIMAV">
+            </div>
+            <div class="hero-image-overlay">
+                <p class="overlay-title" id="heroTitle">Bastón Inteligente SIMAV</p>
+                <p class="overlay-price" id="heroPrice">Modelo Pro</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================================
+         FEATURED PRODUCT
+    ================================================= -->
+    <section class="featured-piece">
+        <div class="container">
+            <div class="featured-grid">
+                <div class="featured-image-wrapper">
+                    <div class="featured-image">
+                        <img src="images/maison-hero-02.jpg" alt="Bastón inteligente SIMAV Pro">
+                    </div>
+                    <div class="featured-badge">Nuevo Modelo</div>
+                </div>
+                <div class="featured-content">
+                    <p class="text-label featured-label">Producto Destacado</p>
+                    <h2 class="heading-display featured-title">
+                        SIMAV Pro
+                    </h2>
+                    <p class="text-body featured-description">
+                        El bastón inteligente SIMAV Pro integra sensores ultrasónicos 
+                        de última generación, GPS de alta precisión y conectividad 
+                        Bluetooth para ofrecer una experiencia de navegación segura 
+                        y autónoma. Diseñado en colaboración con usuarios reales.
+                    </p>
+                    <div class="featured-details">
+                        <div class="detail-row">
+                            <span class="detail-label">Sensores</span>
+                            <span class="detail-value">Ultrasónico + Infrarrojo</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Conectividad</span>
+                            <span class="detail-value">Bluetooth 5.0 + GPS</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Batería</span>
+                            <span class="detail-value">Hasta 12 horas de uso</span>
+                        </div>
+                    </div>
+                    <p class="featured-price">SIMAV Pro</p>
+                    <a href="#contact" class="btn-primary">Solicitar Información</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================================
+         COLLECTIONS
+    ================================================= -->
+    <section class="collections" id="collections">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-header-left">
+                    <h2 class="heading-display section-title">Nuestros Productos</h2>
+                    <p class="text-body section-subtitle">
+                        Soluciones diseñadas para cada etapa de movilidad
+                    </p>
+                </div>
+                <a href="#" class="btn-text">Ver Todos los Productos</a>
+            </div>
+
+            <div class="collections-grid">
+                <div class="collection-item">
+                    <div class="collection-image">
+                        <img src="images/maison-hero-03.jpg" alt="SIMAV Pro">
+                    </div>
+                    <div class="collection-overlay">
+                        <h3 class="collection-name">SIMAV Pro</h3>
+                        <p class="collection-count">Modelo avanzado</p>
+                    </div>
+                </div>
+
+                <div class="collection-item">
+                    <div class="collection-image">
+                        <img src="images/maison-doree-01.jpg" alt="SIMAV Lite">
+                    </div>
+                    <div class="collection-overlay">
+                        <h3 class="collection-name">SIMAV Lite</h3>
+                        <p class="collection-count">Modelo esencial</p>
+                    </div>
+                </div>
+
+                <div class="collection-item">
+                    <div class="collection-image">
+                        <img src="images/maison-doree-02.jpg" alt="SIMAV Kids">
+                    </div>
+                    <div class="collection-overlay">
+                        <h3 class="collection-name">SIMAV Kids</h3>
+                        <p class="collection-count">Para menores</p>
+                    </div>
+                </div>
+
+                <div class="collection-item">
+                    <div class="collection-image">
+                        <img src="images/maison-doree-03.jpg" alt="Accesorios SIMAV">
+                    </div>
+                    <div class="collection-overlay">
+                        <h3 class="collection-name">Accesorios</h3>
+                        <p class="collection-count">Complementos</p>
+                    </div>
+                </div>
+
+                <div class="collection-item">
+                    <div class="collection-image">
+                        <img src="images/maison-doree-04.jpg" alt="App SIMAV">
+                    </div>
+                    <div class="collection-overlay">
+                        <h3 class="collection-name">App SIMAV</h3>
+                        <p class="collection-count">Aplicación móvil</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================================
+         OUR STORY / PROJECT
+    ================================================= -->
+    <section class="story" id="story">
+        <div class="container">
+            <div class="story-grid">
+                <div class="story-content">
+                    <p class="text-label story-label">Nuestro Origen</p>
+                    <h2 class="heading-display story-title">
+                        Un Proyecto con Propósito e Impacto Social
+                    </h2>
+                    <p class="text-body story-text">
+                        SIMAV nació de la necesidad real de mejorar la calidad de vida 
+                        de personas con discapacidad visual. Nuestro equipo multidisciplinario 
+                        combina ingeniería, diseño y trabajo social para crear soluciones 
+                        tecnológicas que verdaderamente transforman vidas.
+                    </p>
+                    <p class="text-body story-text">
+                        Cada iteración del bastón inteligente ha sido desarrollada con 
+                        retroalimentación directa de usuarios, especialistas en rehabilitación 
+                        visual y organizaciones civiles. La tecnología al servicio de la 
+                        inclusión es nuestra guía.
+                    </p>
+                    <div class="story-signature">
+                        <p class="signature-name">Equipo SIMAV</p>
+                        <p class="signature-title">Ingeniería & Diseño Social</p>
+                    </div>
+                </div>
+                <div class="story-images">
+                    <div class="story-image">
+                        <img src="images/maison-doree-05.jpg" alt="Desarrollo del proyecto SIMAV">
+                    </div>
+                    <div class="story-image">
+                        <img src="images/maison-doree-06.jpg" alt="Pruebas del bastón SIMAV">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================================
+         TECHNOLOGY / CRAFTSMANSHIP
+    ================================================= -->
+    <section class="craftsmanship" id="craftsmanship">
+        <div class="container">
+            <div class="craft-grid">
+                <div class="craft-content">
+                    <p class="text-label">Nuestra Tecnología</p>
+                    <h2 class="heading-display craft-title">
+                        Ingeniería Precisa para la Independencia
+                    </h2>
+                    <p class="text-body craft-text">
+                        El sistema SIMAV integra múltiples capas tecnológicas diseñadas 
+                        para funcionar en armonía. Cada componente ha sido seleccionado 
+                        y validado para garantizar fiabilidad en entornos cotidianos 
+                        reales, desde interiores hasta exteriores complejos.
+                    </p>
+                    <ul class="craft-list text-body">
+                        <li>Sensores ultrasónicos y de infrarrojo calibrados con IA</li>
+                        <li>Geolocalización GPS de alta precisión con mapas offline</li>
+                        <li>Retroalimentación háptica y auditiva personalizable</li>
+                        <li>Aplicación móvil con interfaz de voz accesible</li>
+                    </ul>
+                    <a href="#contact" class="btn-primary">Conocer la Tecnología</a>
+                </div>
+                <div class="craft-image-wrapper">
+                    <div class="craft-image">
+                        <img src="images/maison-doree-07.jpg" alt="Tecnología SIMAV en detalle">
+                    </div>
+                    <div class="craft-stats">
+                        <div class="stat-item">
+                            <p class="stat-number">3m</p>
+                            <p class="stat-label">Alcance Detección</p>
+                        </div>
+                        <div class="stat-item">
+                            <p class="stat-number">12h</p>
+                            <p class="stat-label">Duración Batería</p>
+                        </div>
+                        <div class="stat-item">
+                            <p class="stat-number">98%</p>
+                            <p class="stat-label">Precisión GPS</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================================
+         TESTIMONIALS
+    ================================================= -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="testimonials-header">
+                <p class="text-label">Usuarios SIMAV</p>
+                <h2 class="heading-display testimonials-title">Historias de Independencia</h2>
+                <p class="text-body testimonials-subtitle">Lo que dicen quienes usan SIMAV en su vida diaria</p>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">
+                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                    </div>
+                    <p class="testimonial-text">
+                        SIMAV cambió completamente mi rutina diaria. Ahora puedo desplazarme 
+                        con confianza y sin depender de terceros para mis actividades cotidianas.
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">
+                            <img src="images/avatar-01.jpg" alt="Mariana R.">
+                        </div>
+                        <div class="testimonial-info">
+                            <p class="testimonial-name">Mariana R.</p>
+                            <p class="testimonial-detail">Usuario SIMAV Pro</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">
+                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                    </div>
+                    <p class="testimonial-text">
+                        La detección de obstáculos es increíblemente precisa. Me ha evitado 
+                        muchos tropiezos y me da una seguridad que no encontré en otras soluciones.
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">
+                            <img src="images/avatar-02.jpg" alt="Carlos M.">
+                        </div>
+                        <div class="testimonial-info">
+                            <p class="testimonial-name">Carlos M.</p>
+                            <p class="testimonial-detail">Usuario Piloto</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">
+                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                    </div>
+                    <p class="testimonial-text">
+                        Como madre de un niño con baja visión, SIMAV me da tranquilidad. 
+                        La app me permite saber su ubicación en tiempo real. Es una maravilla.
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">
+                            <img src="images/avatar-03.jpg" alt="Sofía E.">
+                        </div>
+                        <div class="testimonial-info">
+                            <p class="testimonial-name">Sofía E.</p>
+                            <p class="testimonial-detail">Familiar de usuario</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================================
+         CONTACT
+    ================================================= -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-content">
+                    <p class="text-label">Ponte en Contacto</p>
+                    <h2 class="heading-display contact-title">
+                        Hablemos del Proyecto SIMAV
+                    </h2>
+                    <p class="text-body contact-text">
+                        ¿Tienes preguntas sobre nuestro sistema, quieres participar como 
+                        usuario piloto o estás interesado en colaborar? Estamos aquí para 
+                        atenderte y hacer crecer juntos este proyecto.
+                    </p>
+
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <p class="contact-item-label">Ubicación</p>
+                            <p class="contact-item-value">
+                                Instituto Tecnológico<br>
+                                Poza Rica, Veracruz, México
+                            </p>
+                        </div>
+                        <div class="contact-item">
+                            <p class="contact-item-label">Horario de Atención</p>
+                            <p class="contact-item-value">
+                                Lunes – Viernes, 9:00 AM a 5:00 PM<br>
+                                Sábados, Previa cita
+                            </p>
+                        </div>
+                        <div class="contact-item">
+                            <p class="contact-item-label">Contacto</p>
+                            <p class="contact-item-value">
+                                <a href="tel:+527821234567">+52 (782) 123-4567</a><br>
+                                <a href="mailto:contacto@simav.mx">contacto@simav.mx</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form-wrapper">
+                    <h3 class="form-title">Envíanos un Mensaje</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label class="form-label" for="name">Nombre Completo</label>
+                            <input type="text" id="name" name="name" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="email">Correo Electrónico</label>
+                            <input type="email" id="email" name="email" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="phone">Teléfono</label>
+                            <input type="tel" id="phone" name="phone" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="message">¿En qué podemos ayudarte?</label>
+                            <textarea id="message" name="message" class="form-textarea"
+                                placeholder="Cuéntanos sobre tu interés en SIMAV..."></textarea>
+                        </div>
+                        <button type="submit" class="form-submit">Enviar Mensaje</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================================
+         FOOTER
+    ================================================= -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Columna 1: Marca -->
+                <div class="footer-brand">
+                    <div class="footer-logo-wrapper">
+                        <img src="images/simav-logo.png" alt="SIMAV" class="footer-logo-img">
+                        <span class="footer-logo-name">SIMAV</span>
+                    </div>
+                    <p class="footer-tagline">
+                        Sistema Inteligente para Movilidad y Asistencia Visual. 
+                        Tecnología accesible para una vida más independiente.
+                    </p>
+                    <div class="footer-contact-info">
+                        <p>Instituto Tecnológico de Poza Rica</p>
+                        <p>Veracruz, México</p>
+                        <p><a href="tel:+527821234567">+52 (782) 123-4567</a></p>
+                        <p><a href="mailto:contacto@simav.mx">contacto@simav.mx</a></p>
+                    </div>
+                </div>
+
+                <!-- Columna 2: Productos -->
+                <div class="footer-column">
+                    <h4 class="footer-column-title">Productos</h4>
+                    <ul class="footer-links">
+                        <li><a href="#collections">Todos los Productos</a></li>
+                        <li><a href="#">SIMAV Pro</a></li>
+                        <li><a href="#">SIMAV Lite</a></li>
+                        <li><a href="#">SIMAV Kids</a></li>
+                        <li><a href="#">Accesorios</a></li>
+                    </ul>
+                </div>
+
+                <!-- Columna 3: Proyecto -->
+                <div class="footer-column">
+                    <h4 class="footer-column-title">Proyecto</h4>
+                    <ul class="footer-links">
+                        <li><a href="#story">Nuestro Origen</a></li>
+                        <li><a href="#craftsmanship">Tecnología</a></li>
+                        <li><a href="#contact">Contáctanos</a></li>
+                        <li><a href="#">Usuarios Piloto</a></li>
+                        <li><a href="#">Aviso de Privacidad</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <p class="footer-copyright">© 2026 SIMAV — Sistema Inteligente para Movilidad y Asistencia Visual</p>
+                <div class="footer-social">
+                    <a href="#">Instagram</a>
+                    <a href="#">Facebook</a>
+                    <a href="#">YouTube</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="simav-store-app.js"></script>
+</body>
+</html>
