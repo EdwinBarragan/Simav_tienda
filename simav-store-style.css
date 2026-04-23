@@ -248,6 +248,15 @@ a {
 	cursor: pointer;
 	padding: 10px;
 }
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: flex;
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        z-index: 1100;
+    }
+}
 
 .menu-toggle span {
 	display: block;
@@ -306,6 +315,9 @@ a {
 	animation: fadeUp 0.8s ease forwards;
 	animation-delay: 0.5s;
 }
+.hero-title {
+    text-align: center;
+}
 
 .hero-title em {
 	font-style: italic;
@@ -319,6 +331,10 @@ a {
 	transform: translateY(20px);
 	animation: fadeUp 0.8s ease forwards;
 	animation-delay: 0.7s;
+}
+.hero-description {
+    text-align: center;
+    margin: 0 auto;
 }
 
 .hero-actions {
@@ -348,6 +364,10 @@ a {
 	border-radius: var(--radius-sm);
 	cursor: pointer;
 	transition: all 0.3s ease;
+}
+.btn-primary {
+    display: block;
+    margin: 0 auto;
 }
 
 .btn-primary:hover {
