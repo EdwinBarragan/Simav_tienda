@@ -10,7 +10,274 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&display=swap" rel="stylesheet">
+    
+    <!-- Mantén tu CSS original -->
     <link rel="stylesheet" href="simav-store-style.css">
+    
+    <!-- JavaScript externo para navegación móvil -->
+    <script src="simav-store-app.js" defer></script>
+    
+    <!-- Estilos del el carrito y botones -->
+    <style>
+        .btn-carrito {
+            background-color: #FF6B35;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Outfit', Arial, sans-serif;
+            margin-top: 20px;
+            display: inline-block;
+        }
+
+        .btn-carrito:hover {
+            background-color: #E55A2B;
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .btn-carrito:active {
+            transform: scale(0.98);
+        }
+        
+        /* Estilos del carrito modal - VENTANA MÁS GRANDE */
+        .cart-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.6);
+            z-index: 1000;
+            backdrop-filter: blur(3px);
+        }
+        
+        .cart-modal-content {
+            background-color: white;
+            margin: 30px auto;
+            padding: 25px;
+            width: 90%;
+            max-width: 750px;  /* Más grande */
+            border-radius: 200px;
+            max-height: 500vh;  /* Más alto */
+            overflow-y: auto;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            animation: modalSlideIn 0.3s ease-out;
+        }
+        
+        @keyframes modalSlideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .cart-header h3 {
+            font-size: 24px;
+            margin: 0;
+        }
+        
+        .close-cart {
+            background: none;
+            border: none;
+            font-size: 32px;
+            cursor: pointer;
+            color: #999;
+            transition: all 0.3s;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+        
+        .close-cart:hover {
+            color: #333;
+            background-color: #f0f0f0;
+        }
+        
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 10px;
+            background-color: #fafafa;
+            border-radius: 8px;
+        }
+        
+        .cart-item-info {
+            flex: 1;
+        }
+        
+        .cart-item-title {
+            font-weight: bold;
+            margin: 0 0 5px 0;
+            font-size: 16px;
+        }
+        
+        .cart-item-price {
+            color: #666;
+            margin: 0;
+            font-size: 14px;
+        }
+        
+        .cart-item-quantity {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .quantity-btn {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            width: 30px;
+            height: 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        .quantity-btn:hover {
+            background-color: #ddd;
+        }
+        
+        .remove-item {
+            background-color: #ff4444;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 10px;
+            font-size: 12px;
+        }
+        
+        .remove-item:hover {
+            background-color: #cc0000;
+        }
+        
+        .cart-footer {
+            border-top: 2px solid #f0f0f0;
+            padding-top: 20px;
+            margin-top: 20px;
+        }
+        
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #f8f8f8;
+            border-radius: 8px;
+        }
+        
+        .checkout-btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px;
+            width: 100%;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        .checkout-btn:hover {
+            background-color: #45a049;
+        }
+        
+        .cart-icon-btn {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            position: relative;
+            padding: 10px;
+            z-index: 9999;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: #FF6B35;
+            color: white;
+            border-radius: 50%;
+            padding: 2px 6px;
+            font-size: 12px;
+            min-width: 18px;
+            text-align: center;
+        }
+        
+        .empty-cart {
+            text-align: center;
+            color: #999;
+            padding: 60px 20px;
+            font-size: 18px;
+        }
+        
+        /* Scroll personalizado */
+        .cart-modal-content::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .cart-modal-content::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        
+        .cart-modal-content::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 10px;
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes slideOut {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+        }
+        .cart-modal-content {
+        border-radius: 0 !important; /* bordes rectos de la vntana del carrto de compras */
+    }
+    </style>
 </head>
 <body>
 
@@ -34,7 +301,32 @@
                     <a href="#craftsmanship">Tecnología</a>
                     <a href="#contact">Contáctanos</a>
                     <a href="#contact" class="nav-cta">Solicitar Información</a>
+
+                    <!-- Botón del carrito -->
+                    <button id="cart-btn" class="cart-icon-btn" aria-label="Carrito">
+                        🛒 <span id="cart-count" class="cart-count">0</span>
+                    </button>
                 </nav>
+
+                <!-- Ventana flotante del carrito -->
+                <div id="cart-modal" class="cart-modal">
+                    <div class="cart-modal-content">
+                        <div class="cart-header">
+                            <h3>Carrito de Compras🛍️</h3>
+                            <button id="close-cart" class="close-cart">&times;</button>
+                        </div>
+                        <div id="cart-items-container" class="cart-items">
+                            <!-- Los productos se agregarán dinámicamente -->
+                        </div>
+                        <div class="cart-footer">
+                            <div class="cart-total">
+                                <span>Total:</span>
+                                <span id="cart-total-price">$0.00</span>
+                            </div>
+                            <button id="checkout-btn" class="checkout-btn">Finalizar Compra</button>
+                        </div>
+                    </div>
+                </div>
 
                 <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
                     <span></span>
@@ -64,37 +356,42 @@
          HERO
     ================================================= -->
     <section class="hero">
-        <div class="hero-content">
-            <p class="text-label hero-tagline">Movilidad Inteligente</p>
-            <h1 class="heading-display hero-title">
-                Tecnología que<br>Guía tus <em>Pasos</em>
-            </h1>
-            <p class="text-body hero-description">
-                SIMAV es un bastón inteligente basado en un sistema de asistencia, operado por sensores y tecnologías
-                de comunicación, diseñado específicamente para apoyar a personas con problemas de visión en su movilidad diaria, permitiendo 
-                potenciar la seguridad de los usuarios.
-            </p>
-            <div class="hero-actions">
-                <a href="#collections" class="btn-primary">Explorar Productos</a>
-                <a href="#story" class="btn-text">Conocer el Proyecto</a>
-            </div>
+    <div class="hero-content">
+        <p class="text-label hero-tagline">Movilidad Inteligente</p>
+        <h1 class="heading-display hero-title">
+            Tecnología que<br>Guía tus <em>Pasos</em>
+        </h1>
+        <p class="text-body hero-description">
+            SIMAV es un bastón inteligente basado en un sistema de asistencia, operado por sensores y tecnologías
+            de comunicación, diseñado específicamente para apoyar a personas con problemas de visión en su movilidad diaria, permitiendo 
+            potenciar la seguridad de los usuarios.
+        </p>
+        <div class="hero-actions">
+            <a href="#collections" class="btn-primary">Explorar Productos</a>
+            <a href="#story" class="btn-text">Conocer el Proyecto</a>
         </div>
-        <div class="hero-image">
-            <div class="hero-slide active" data-title="Bastón Inteligente SIMAV" data-price="Modelo Pro">
-                <img src="images/maison-hero-01.jpg" alt="Bastón inteligente SIMAV">
-            </div>
-            <div class="hero-slide" data-title="Sensor de Proximidad" data-price="Tecnología Avanzada">
-                <img src="images/maison-hero-02.jpg" alt="Tecnología de sensores SIMAV">
-            </div>
-            <div class="hero-slide" data-title="Conectividad Total" data-price="App Incluida">
-                <img src="images/maison-hero-03.jpg" alt="Conectividad y app SIMAV">
-            </div>
-            <div class="hero-image-overlay">
-                <p class="overlay-title" id="heroTitle">Bastón Inteligente SIMAV</p>
-                <p class="overlay-price" id="heroPrice">Modelo Pro</p>
-            </div>
+        <button class="btn-carrito" onclick="agregarAlCarrito('SIMAV Pro Completo', 0.00)">Agregar al carrito - $00.00</button>
+    </div>
+
+    <div class="hero-image">
+        <!-- Las 3 imágenes como fondo deslizable -->
+        <div class="hero-slide active" data-title="Conectividad Total" data-price="App Incluida">
+            <img src="images/baston.png" alt="Bastón SIMAV">
         </div>
-    </section>
+        <div class="hero-slide" data-title="Conectividad Total" data-price="App Incluida">
+            <img src="images/spro.png" alt="SIMAV Pro">
+        </div>
+        <div class="hero-slide" data-title="Conectividad Total" data-price="App Incluida">
+            <img src="images/baston3.png" alt="Bastón SIMAV 3">
+        </div>
+
+        <!-- Overlay que va DETRÁS del texto pero ENCIMA de las imágenes -->
+        <div class="hero-image-overlay">
+            <p class="overlay-title" id="heroTitle">Bastón Inteligente SIMAV</p>
+            <p class="overlay-price" id="heroPrice">Modelo Pro</p>
+        </div>
+    </div>
+</section>
 
     <!-- ================================================
          FEATURED PRODUCT
@@ -104,7 +401,7 @@
             <div class="featured-grid">
                 <div class="featured-image-wrapper">
                     <div class="featured-image">
-                        <img src="images/maison-hero-02.jpg" alt="Bastón inteligente SIMAV Pro">
+                        <img src="images/spro.png" alt="Bastón inteligente SIMAV Pro">
                     </div>
                     <div class="featured-badge">Nuevo Modelo</div>
                 </div>
@@ -133,15 +430,15 @@
                             <span class="detail-value">De larga duración</span>
                         </div>
                     </div>
-                    <p class="featured-price">SIMAV Pro</p>
-                    <a href="#contact" class="btn-primary">Solicitar Información</a>
+                    <p class="featured-price">$00.00 MXN</p>
+                    <button class="btn-carrito" onclick="agregarAlCarrito('SIMAV Pro', 5499.00)">Agregar al carrito - $0.00</button>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ================================================
-         COLLECTIONS
+         COLLECTIONS (Tus imágenes originales se mantienen)
     ================================================= -->
     <section class="collections" id="collections">
         <div class="container">
@@ -156,43 +453,48 @@
             </div>
 
             <div class="collections-grid">
+                <!-- Tus imágenes originales siguen aquí -->
                 <div class="collection-item">
                     <div class="collection-image">
-                        <img src="images/maison-hero-03.jpg" alt="SIMAV Pro">
+                        <img src="images/spro.png" alt="SIMAV Pro">
                     </div>
                     <div class="collection-overlay">
                         <h3 class="collection-name">SIMAV Pro</h3>
                         <p class="collection-count">Modelo avanzado</p>
+                        <button class="btn-carrito" onclick="agregarAlCarrito('SIMAV Pro', 0.00)" style="margin-top: 10px; width: auto; padding: 8px 16px; font-size: 14px;">Agregar - $0.00</button>
                     </div>
                 </div>
 
                 <div class="collection-item">
                     <div class="collection-image">
-                        <img src="images/maison-doree-01.jpg" alt="SIMAV Lite">
+                        <img src="images/baston.png" alt="SIMAV Lite">
                     </div>
                     <div class="collection-overlay">
                         <h3 class="collection-name">SIMAV Lite</h3>
                         <p class="collection-count">Modelo esencial</p>
+                        <button class="btn-carrito" onclick="agregarAlCarrito('SIMAV Lite', 0.00)" style="margin-top: 10px; width: auto; padding: 8px 16px; font-size: 14px;">Agregar - $0.00</button>
                     </div>
                 </div>
 
                 <div class="collection-item">
                     <div class="collection-image">
-                        <img src="images/maison-doree-02.jpg" alt="SIMAV Kids">
+                        <img src="images/baston2.png" alt="SIMAV Kids">
                     </div>
                     <div class="collection-overlay">
                         <h3 class="collection-name">SIMAV Kids</h3>
                         <p class="collection-count">Para menores</p>
+                        <button class="btn-carrito" onclick="agregarAlCarrito('SIMAV Kids', 0.00)" style="margin-top: 10px; width: auto; padding: 8px 16px; font-size: 14px;">Agregar - $0.00</button>
                     </div>
                 </div>
 
                 <div class="collection-item">
                     <div class="collection-image">
-                        <img src="images/maison-doree-03.jpg" alt="Accesorios SIMAV">
+                        <img src="images/baston3.png" alt="Accesorios SIMAV">
                     </div>
                     <div class="collection-overlay">
                         <h3 class="collection-name">Accesorios</h3>
                         <p class="collection-count">Complementos</p>
+                        <button class="btn-carrito" onclick="agregarAlCarrito('Kit de Accesorios SIMAV', 0.00)" style="margin-top: 10px; width: auto; padding: 8px 16px; font-size: 14px;">Agregar - $0.00</button>
                     </div>
                 </div>
 
@@ -205,13 +507,11 @@
                         <p class="collection-count">Aplicación móvil</p>
                     </div>
                 </div>
-            </div>
+            </div> 
         </div>
     </section>
 
-    <!-- ================================================
-         OUR STORY / PROJECT
-    ================================================= -->
+    <!-- El resto de tu contenido (story, craftsmanship, testimonials, contact, footer) se mantiene IGUAL -->
     <section class="story" id="story">
         <div class="container">
             <div class="story-grid">
@@ -241,19 +541,16 @@
                 </div>
                 <div class="story-images">
                     <div class="story-image">
-                        <img src="images/maison-doree-05.jpg" alt="Desarrollo del proyecto SIMAV">
+                        <img src="images/spro.png" alt="Desarrollo del proyecto SIMAV">
                     </div>
                     <div class="story-image">
-                        <img src="images/maison-doree-06.jpg" alt="Pruebas del bastón SIMAV">
+                        <img src="images/baston.png" alt="Pruebas del bastón SIMAV">
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ================================================
-         TECHNOLOGY / CRAFTSMANSHIP
-    ================================================= -->
     <section class="craftsmanship" id="craftsmanship">
         <div class="container">
             <div class="craft-grid">
@@ -272,13 +569,13 @@
                         <li>Pruebas de resistencia</li>
                         <li>Componentes de alta durabilidad</li>
                         <li>Control de calidad en cada etapa</li>
-                        <li>Mantenimiento concurrentede la app</li>
+                        <li>Mantenimiento concurrente de la app</li>
                     </ul>
                     <a href="#contact" class="btn-primary">Conocer la Tecnología</a>
                 </div>
                 <div class="craft-image-wrapper">
                     <div class="craft-image">
-                        <img src="images/maison-doree-07.jpg" alt="Tecnología SIMAV en detalle">
+                        <img src="images/spro.png" alt="Tecnología SIMAV en detalle">
                     </div>
                     <div class="craft-stats">
                         <div class="stat-item">
@@ -299,29 +596,20 @@
         </div>
     </section>
 
-    <!-- ================================================
-         TESTIMONIALS
-    ================================================= -->
     <section class="testimonials">
         <div class="container">
             <div class="testimonials-header">
                 <p class="text-label">SIMAV</p>
                 <h2 class="heading-display testimonials-title">Alertas del Sistema</h2>
-                <p class="text-body testimonials-subtitle">El monitoreo consiste en en que cada usuario quede registrado en la app y la persona encargada de su cuidado
+                <p class="text-body testimonials-subtitle">El monitoreo consiste en que cada usuario quede registrado en la app y la persona encargada de su cuidado
                     controle sus rutas y visualice las alertas en tiempo real en la app, para el usuario con problemas de visión, usará unos audífonos de acompañamiento donde podrá 
                     recibir las alertas del sistema por medio de audio para mejorar aún más la seguridad de los usuarios. Mientras que el bastón evitará caídas y accidentes inesperados
-                    detectándo obstaculos, desniveles, detección de luces RGB en la infraestructura urbana como lo son el caso de los semáforos en cruces peatonales y objetos cercanos que impidan el paso.
+                    detectándo obstáculos, desniveles, detección de luces RGB en la infraestructura urbana como lo son el caso de los semáforos en cruces peatonales y objetos cercanos que impidan el paso.
                 </p>
-            </div>
-
-            
             </div>
         </div>
     </section>
 
-    <!-- ================================================
-         CONTACT
-    ================================================= -->
     <section class="contact" id="contact">
         <div class="container">
             <div class="contact-grid">
@@ -391,13 +679,9 @@
         </div>
     </section>
 
-    <!-- ================================================
-         FOOTER
-    ================================================= -->
     <footer class="site-footer">
         <div class="container">
             <div class="footer-grid">
-                <!-- Columna 1: Marca -->
                 <div class="footer-brand">
                     <div class="footer-logo-wrapper">
                         <img src="images/simav-logo.png" alt="SIMAV" class="footer-logo-img">
@@ -415,7 +699,6 @@
                     </div>
                 </div>
 
-                <!-- Columna 2: Productos -->
                 <div class="footer-column">
                     <h4 class="footer-column-title">Productos</h4>
                     <ul class="footer-links">
@@ -427,7 +710,6 @@
                     </ul>
                 </div>
 
-                <!-- Columna 3: Proyecto -->
                 <div class="footer-column">
                     <h4 class="footer-column-title">Proyecto</h4>
                     <ul class="footer-links">
@@ -440,7 +722,6 @@
                 </div>
             </div>
 
-            <!-- Footer Bottom -->
             <div class="footer-bottom">
                 <p class="footer-copyright">© 2026 SIMAV — Sistema Inteligente para Movilidad y Asistencia Visual</p>
                 <div class="footer-social">
@@ -452,6 +733,163 @@
         </div>
     </footer>
 
-    <script src="simav-store-app.js"></script>
+    <script>
+        // Carrito de compras
+        let carrito = [];
+        
+        function agregarAlCarrito(nombre, precio) {
+            const productoExistente = carrito.find(item => item.nombre === nombre);
+            
+            if (productoExistente) {
+                productoExistente.cantidad++;
+                productoExistente.total = productoExistente.cantidad * productoExistente.precio;
+            } else {
+                carrito.push({
+                    nombre: nombre,
+                    precio: precio,
+                    cantidad: 1,
+                    total: precio
+                });
+            }
+            
+            actualizarCarrito();
+            mostrarNotificacion(`${nombre} agregado al carrito`);
+        }
+        
+        function actualizarCarrito() {
+            const contadorCarrito = document.getElementById('cart-count');
+            const totalItems = carrito.reduce((sum, item) => sum + item.cantidad, 0);
+            contadorCarrito.textContent = totalItems;
+            
+            const cartContainer = document.getElementById('cart-items-container');
+            const totalPrecioElement = document.getElementById('cart-total-price');
+            
+            if (carrito.length === 0) {
+                cartContainer.innerHTML = '<div class="empty-cart">🛒 Tu carrito está vacío</div>';
+                totalPrecioElement.textContent = '$0.00';
+                return;
+            }
+            
+            let cartHTML = '';
+            let totalPrecio = 0;
+            
+            carrito.forEach((item, index) => {
+                totalPrecio += item.total;
+                cartHTML += `
+                    <div class="cart-item">
+                        <div class="cart-item-info">
+                            <h4 class="cart-item-title">${item.nombre}</h4>
+                            <p class="cart-item-price">$${item.precio.toFixed(2)} MXN c/u</p>
+                        </div>
+                        <div class="cart-item-quantity">
+                            <button class="quantity-btn" onclick="cambiarCantidad(${index}, -1)">-</button>
+                            <span>${item.cantidad}</span>
+                            <button class="quantity-btn" onclick="cambiarCantidad(${index}, 1)">+</button>
+                            <button class="remove-item" onclick="eliminarProducto(${index})">Eliminar</button>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            cartContainer.innerHTML = cartHTML;
+            totalPrecioElement.textContent = `$${totalPrecio.toFixed(2)} MXN`;
+        }
+        
+        function cambiarCantidad(index, cambio) {
+            const item = carrito[index];
+            const nuevaCantidad = item.cantidad + cambio;
+            
+            if (nuevaCantidad <= 0) {
+                eliminarProducto(index);
+            } else {
+                item.cantidad = nuevaCantidad;
+                item.total = item.cantidad * item.precio;
+                actualizarCarrito();
+            }
+        }
+        
+        function eliminarProducto(index) {
+            carrito.splice(index, 1);
+            actualizarCarrito();
+        }
+        
+        function mostrarNotificacion(mensaje) {
+            const notificacion = document.createElement('div');
+            notificacion.textContent = mensaje;
+            notificacion.style.cssText = `
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                background-color: #4CAF50;
+                color: white;
+                padding: 12px 20px;
+                border-radius: 5px;
+                z-index: 1001;
+                animation: slideIn 0.3s ease-out;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            `;
+            
+            document.body.appendChild(notificacion);
+            
+            setTimeout(() => {
+                notificacion.style.animation = 'slideOut 0.3s ease-out';
+                setTimeout(() => {
+                    document.body.removeChild(notificacion);
+                }, 300);
+            }, 2000);
+        }
+        
+        function abrirCarrito() {
+            const cartModal = document.getElementById('cart-modal');
+            cartModal.style.display = 'block';
+        }
+        
+        function cerrarCarrito() {
+            const cartModal = document.getElementById('cart-modal');
+            cartModal.style.display = 'none';
+        }
+        
+        function finalizarCompra() {
+            if (carrito.length === 0) {
+                mostrarNotificacion('⚠️ Tu carrito está vacío. Agrega productos primero.');
+                return;
+            }
+            
+            const total = carrito.reduce((sum, item) => sum + item.total, 0);
+            const mensaje = `🛍️ ¡Gracias por tu compra!\n\nProductos:\n${carrito.map(item => `- ${item.nombre}: ${item.cantidad} x $${item.precio.toFixed(2)} = $${item.total.toFixed(2)}`).join('\n')}\n\nTotal: $${total.toFixed(2)} MXN\n\nUn asesor se pondrá en contacto contigo para confirmar tu pedido.`;
+            
+            alert(mensaje);
+            carrito = [];
+            actualizarCarrito();
+            cerrarCarrito();
+            mostrarNotificacion('✅ ¡Compra realizada con éxito! Te contactaremos pronto.');
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const cartBtn = document.getElementById('cart-btn');
+            const closeCart = document.getElementById('close-cart');
+            const checkoutBtn = document.getElementById('checkout-btn');
+            const cartModal = document.getElementById('cart-modal');
+            
+            if(cartBtn) cartBtn.addEventListener('click', abrirCarrito);
+            if(closeCart) closeCart.addEventListener('click', cerrarCarrito);
+            if(checkoutBtn) checkoutBtn.addEventListener('click', finalizarCompra);
+            
+            window.addEventListener('click', function(event) {
+                if (event.target === cartModal) {
+                    cerrarCarrito();
+                }
+            });
+            
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('¡Mensaje enviado con éxito! Nos pondremos en contacto contigo pronto.');
+                    contactForm.reset();
+                });
+            }
+        });
+    </script>
 </body>
 </html>

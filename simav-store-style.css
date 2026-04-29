@@ -247,6 +247,10 @@ a {
 	border: none;
 	cursor: pointer;
 	padding: 10px;
+	min-width: 44px;
+	min-height: 44px;
+	justify-content: center;
+	align-items: center;
 }
 @media (max-width: 768px) {
     .menu-toggle {
@@ -254,7 +258,7 @@ a {
         position: fixed;
         top: 10px;
         right: 10px;
-        z-index: 1100;
+        z-index: 10000;
     }
 }
 
@@ -265,6 +269,7 @@ a {
 	background-color: var(--color-blue);
 	transition: all 0.3s ease;
 	border-radius: 2px;
+	pointer-events: none;
 }
 
 /* ========================================
@@ -1219,10 +1224,32 @@ a {
 	.nav-main { display: none; }
 	.menu-toggle { display: flex; }
 
-	.hero { grid-template-columns: 1fr; height: auto; max-height: none; }
-	.hero-content { padding: calc(var(--space-lg) + 60px) var(--space-md) var(--space-lg); order: 2; }
-	.hero-image { order: 1; height: 400px; clip-path: none; }
-	.hero-image-overlay { display: none; }
+	.hero {
+		 grid-template-columns: 1fr;
+		 height: auto;
+		 max-height: none;
+	}
+
+	.hero-content {
+		 padding: var(--space-md);
+		 text-align: center;
+	}
+
+	.hero img {
+		 width: 100%;
+		 height: auto;
+		 object-fit: cover;
+	}
+
+	.hero-image {
+		 order: 1;
+		 height: 400px;
+		 clip-path: none;
+	}
+
+	.hero-image-overlay {
+		 display: none;
+	}
 
 	.featured-grid,
 	.story-grid,
@@ -1245,6 +1272,53 @@ a {
 }
 
 @media (max-width: 768px) {
+	.hero {
+		 grid-template-columns: 1fr;
+		 height: auto;
+	}
+
+	.hero-content {
+		 padding: var(--space-md);
+		 text-align: center;
+	}
+
+	.hero-slide {
+		 position: absolute;
+		 top: 0;
+		 left: 0;
+		 width: 100%;
+		 height: 100%;
+		 opacity: 0;
+		 transition: opacity 1s ease-in-out;
+	}
+
+	.hero-slide.active {
+		 opacity: 1;
+	}
+
+	.hero-slide img {
+		 width: 100%;
+		 height: 100%;
+		 object-fit: cover;
+	}
+
+	.hero-image-overlay {
+		 background-color: rgba(255, 255, 255, 0.8); 
+		 width: 400px;        /* Ancho */
+		 height: 200px;       /* Alto */
+	}
+
+	.overlay-title {
+		 font-size: 1.5rem;
+		 font-weight: bold;
+		 margin: 0;
+	}
+
+	.overlay-price {
+		 font-size: 1rem;
+		 margin: 5px 0 0;
+	}
+
 	.collections-grid { grid-template-columns: 1fr 1fr; }
 	.collection-item:nth-child(1) { grid-column: 1 / -1; grid-row: auto; }
 	.collection-item:nth-child(2),
@@ -1349,3 +1423,76 @@ a {
 }
 
 .mobile-overlay.active { opacity: 1; visibility: visible; }
+/* SECCIÓN HERO */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4rem 2rem;
+    background: #f9f9f9;
+    gap: 2rem;
+    position: relative;
+}
+
+.hero-content {
+    flex: 1;
+    z-index: 2; /* Asegura que el texto esté por encima */
+    position: relative;
+}
+
+.hero-image {
+    flex: 1;
+    position: relative;
+    height: 500px;
+    background: #e0e0e0; /* color de respaldo mientras cargan */
+    border-radius: 24px;
+    overflow: hidden;
+}
+
+/* Cada slide de imagen ocupa todo el contenedor */
+.hero-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    z-index: 0; /* Por debajo del overlay */
+}
+
+.hero-slide.active {
+    opacity: 1;
+    z-index: 1;
+}
+
+.hero-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Para que la imagen cubra sin deformarse */
+    display: block;
+}
+
+/* Overlay con el texto "Bastón Inteligente SIMAV" */
+.hero-image-overlay {
+    background-color: rgba(255, 255, 255, 0.8); 
+	width: 400px;        /* Ancho */
+    height: 200px;       /* Alto */
+}
+
+.overlay-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.overlay-price {
+    font-size: 1rem;
+    margin: 5px 0 0;
+}
+
+/* Botones y demás estilos (ajústalos a tu diseño) */
+.btn-primary, .btn-text, .btn-carrito {
+    margin-top: 1rem;
+    display: inline-block;
+}
